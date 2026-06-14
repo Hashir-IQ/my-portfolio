@@ -3,7 +3,7 @@ import { useProjects } from "@/hooks/usePortfolioData";
 import litupSolarImg from "@/assets/litup_solar.png";
 import technoleanLogo from "@/assets/technolean_logo.png";
 import medicareLogo from "@/assets/medicare_logo.jpg";
-import gakharPlazaImg from "@/assets/gakhar_plaza.png";
+import gakharPlazaImg from "@/assets/gakhar_plaza.jpg";
 
 const fallback = [
   {
@@ -85,15 +85,15 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section id="projects" className="py-8 px-6 bg-white">
+    <section id="projects" className="py-12 px-6 bg-black text-white">
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
           
           <div className="md:col-span-4 flex flex-col items-start">
-            <span className="inline-block text-[8px] font-black tracking-widest bg-black text-white px-2 py-0.5 uppercase rounded-sm mb-3">
+            <span className="inline-block text-[8px] font-black tracking-widest bg-white text-black px-2 py-0.5 uppercase rounded-sm mb-3">
               MY PROJECTS
             </span>
-            <h2 className="text-sm font-bold tracking-widest text-black uppercase">
+            <h2 className="text-sm font-bold tracking-widest text-white uppercase">
               Selected Case Studies
             </h2>
           </div>
@@ -103,10 +103,10 @@ const ProjectsSection = () => {
               {projects.map((project: any, i: number) => (
                 <div key={project.title} className="group flex flex-col">
                   {/* Image Container */}
-                  <div className="aspect-[16/10] w-full rounded-md border border-gray-100 overflow-hidden mb-3 bg-gray-50 relative">
+                  <div className="aspect-[16/10] w-full rounded-md border border-neutral-800 overflow-hidden mb-3 bg-neutral-900 relative">
                     {renderProjectImage(project)}
                     {project.badge && (
-                      <span className="absolute top-3 right-3 text-[8px] font-bold bg-black text-white px-1.5 py-0.5 tracking-wider rounded-sm z-20">
+                      <span className="absolute top-3 right-3 text-[8px] font-bold bg-white text-black px-1.5 py-0.5 tracking-wider rounded-sm z-20">
                         {project.badge}
                       </span>
                     )}
@@ -115,7 +115,7 @@ const ProjectsSection = () => {
                   {/* Text Info */}
                   <div className="flex flex-col">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-sm font-bold text-black">
+                      <h3 className="text-sm font-bold text-white">
                         {project.title}
                       </h3>
                       {project.link && (
@@ -123,14 +123,14 @@ const ProjectsSection = () => {
                           href={project.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-black transition-colors"
+                          className="text-neutral-500 hover:text-white transition-colors"
                           aria-label={`Open ${project.title}`}
                         >
                           <ExternalLink size={12} />
                         </a>
                       )}
                     </div>
-                    <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                    <p className="text-xs text-neutral-400 leading-relaxed mb-3">
                       {project.description}
                     </p>
 
@@ -140,13 +140,13 @@ const ProjectsSection = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-black hover:text-gray-600 transition-all w-fit"
+                        className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-white hover:text-neutral-400 transition-all w-fit"
                       >
                         <span>SEE PROJECT</span>
                         <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
                       </a>
                     ) : (
-                      <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-gray-400">
+                      <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-neutral-600">
                         <span>IN DEVELOPMENT</span>
                       </div>
                     )}
@@ -158,7 +158,7 @@ const ProjectsSection = () => {
 
         </div>
         
-        <div className="w-full h-px bg-gray-100 mt-10" />
+        <div className="w-full h-px bg-white/10 mt-10" />
       </div>
     </section>
   );

@@ -91,9 +91,7 @@ const fallbackProjects = [
 ];
 
 const fallbackEducation = [
-  { id: "edu-1", title: "Pak-Austria Fachhochschule", subtitle: "BS Computer Science", detail: "EXPECTED 2026", icon_name: "GraduationCap", sort_order: 0 },
-  { id: "edu-2", title: "Google / Coursera", subtitle: "Google Cybersecurity Professional Certificate", detail: "CERTIFIED", icon_name: "Award", sort_order: 1 },
-  { id: "edu-3", title: "Google Developer Groups", subtitle: "GDG On Campus Core Team", detail: "ACTIVE MEMBER", icon_name: "Users", sort_order: 2 }
+  { id: "edu-1", title: "Pak-Austria Fachhochschule", subtitle: "BS Computer Science", detail: "EXPECTED 2026", icon_name: "GraduationCap", sort_order: 0 }
 ];
 
 const fallbackContact = {
