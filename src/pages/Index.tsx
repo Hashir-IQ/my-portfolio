@@ -39,7 +39,7 @@ const Index = () => {
               Hashir Iqbal
             </h1>
             <p className="text-[9px] font-bold tracking-wider text-gray-400 uppercase mt-0.5">
-              Software Developer
+              Full Stack AI Developer
             </p>
           </div>
         </div>
