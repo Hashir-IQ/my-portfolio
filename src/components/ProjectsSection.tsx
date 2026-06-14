@@ -27,7 +27,7 @@ const fallback = [
     description: "A final year project providing intelligent healthcare diagnostics.",
     tags: ["React", "AI/ML", "Healthcare"],
     badge: "FYP",
-    link: null,
+    link: "https://medicareplus.app",
     imageType: "medical"
   },
 ];
@@ -115,7 +115,7 @@ const ProjectsSection = () => {
                   {/* Text Info */}
                   <div className="flex flex-col">
                     <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-sm font-bold text-black group-hover:text-gray-600 transition-colors">
+                      <h3 className="text-sm font-bold text-black">
                         {project.title}
                       </h3>
                       {project.link && (
@@ -124,6 +124,7 @@ const ProjectsSection = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-gray-400 hover:text-black transition-colors"
+                          aria-label={`Open ${project.title}`}
                         >
                           <ExternalLink size={12} />
                         </a>
@@ -133,11 +134,22 @@ const ProjectsSection = () => {
                       {project.description}
                     </p>
 
-                    {/* READ MORE CTA */}
-                    <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-black group-hover:gap-2 transition-all">
-                      <span>READ MORE</span>
-                      <ArrowRight size={10} />
-                    </div>
+                    {/* SEE PROJECT CTA */}
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-black hover:text-gray-600 transition-all w-fit"
+                      >
+                        <span>SEE PROJECT</span>
+                        <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    ) : (
+                      <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-gray-400">
+                        <span>IN DEVELOPMENT</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}

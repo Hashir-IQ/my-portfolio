@@ -84,7 +84,7 @@ const fallbackProjects = [
     description: "A final year project providing intelligent healthcare diagnostics.",
     tags: ["React", "AI/ML", "Healthcare"],
     badge: "FYP",
-    link: null,
+    link: "https://medicareplus.app",
     imageType: "medical",
     sort_order: 3
   }
