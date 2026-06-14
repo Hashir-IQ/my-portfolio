@@ -64,7 +64,7 @@ const fallbackProjects = [
     description: "An intelligent solar energy tracking and optimization solution.",
     tags: ["React", "IoT", "Sustainability"],
     badge: null,
-    link: null,
+    link: "https://litup-solar.vercel.app/",
     imageType: "solar",
     sort_order: 1
   },
