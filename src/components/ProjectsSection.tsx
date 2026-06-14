@@ -88,7 +88,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-12 border-b border-gray-200">
-      <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase block mb-6">
+      <span className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
         Projects
       </span>
 
