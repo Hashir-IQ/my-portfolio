@@ -52,7 +52,7 @@ const ProjectsSection = () => {
         <img
           src={litupSolarImg}
           alt={project.title}
-          className="w-full h-full object-contain p-6 grayscale"
+          className="w-full h-full object-contain p-6"
         />
       );
     }
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
         <img
           src={technoleanLogo}
           alt={project.title}
-          className="w-full h-full object-contain p-6 grayscale"
+          className="w-full h-full object-contain p-6"
         />
       );
     }
@@ -72,7 +72,7 @@ const ProjectsSection = () => {
         <img
           src={gakharPlazaImg}
           alt={project.title}
-          className="w-full h-full object-cover grayscale"
+          className="w-full h-full object-cover"
         />
       );
     }
@@ -81,7 +81,7 @@ const ProjectsSection = () => {
       <img
         src={medicareLogo}
         alt={project.title}
-        className="w-full h-full object-contain p-6 grayscale"
+        className="w-full h-full object-contain p-6"
       />
     );
   };
