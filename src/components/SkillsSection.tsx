@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useSkills } from "@/hooks/usePortfolioData";
 
 const fallback = [
@@ -12,27 +11,24 @@ const SkillsSection = () => {
   const { data } = useSkills();
   const categories = data ?? fallback;
 
+  // Flatten all skill names to render them in a single wrapping row list
+  const allSkills = categories.flatMap((cat: any) => cat.skill_names);
+
   return (
-    <section id="skills" className="py-20 px-4">
-      <div className="max-w-5xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.6 }}>
-          <h2 className="text-3xl sm:text-4xl font-mono font-bold mb-2 text-foreground">
-            <span className="text-primary">{">"}</span> Skills
-          </h2>
-          <div className="w-20 h-0.5 glow-line mb-10 rounded-full" />
-        </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {categories.map((cat: any, i: number) => (
-            <motion.div key={cat.category} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.5, delay: i * 0.1 }} className="rounded-lg bg-card border border-border p-6 hover:glow-border transition-all duration-300">
-              <h3 className="font-mono text-primary text-sm mb-4 uppercase tracking-wider">{cat.category}</h3>
-              <div className="flex flex-wrap gap-2">
-                {cat.skill_names.map((skill: string) => (
-                  <span key={skill} className="px-3 py-1.5 text-xs font-mono rounded-md bg-secondary text-foreground border border-border hover:border-primary/50 hover:text-primary transition-colors">{skill}</span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+    <section id="skills" className="py-12 border-b border-gray-200">
+      <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase block mb-6">
+        Skills
+      </span>
+      
+      <div className="flex flex-wrap gap-2">
+        {allSkills.map((skill: string) => (
+          <span
+            key={skill}
+            className="px-3 py-1 bg-black text-white text-xs font-semibold rounded-full"
+          >
+            {skill}
+          </span>
+        ))}
       </div>
     </section>
   );

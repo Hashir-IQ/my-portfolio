@@ -4,6 +4,7 @@ import { useExperiences } from "@/hooks/usePortfolioData";
 const iconMap: Record<string, any> = { Briefcase, Terminal, Globe };
 
 const fallback = [
+  { role: "Software Developer", company: "TechnoLean Lab", period: "APR 2026 – PRESENT", icon_name: "Terminal" },
   { role: "Flutter App Development Intern", company: "Innova Workmen", period: "JUL 2024 – SEP 2024", icon_name: "Terminal" },
   { role: "Front End Web Development Intern", company: "Brain Ex World", period: "AUG 2023 – OCT 2023", icon_name: "Briefcase" },
   { role: "WordPress Developer", company: "Freelance", period: "2022 – 2023", icon_name: "Globe" },
@@ -14,43 +15,38 @@ const ExperienceSection = () => {
   const experiences = data ?? fallback;
 
   return (
-    <section id="experience" className="py-12 px-6 bg-black text-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
-          <div className="md:col-span-4">
-            <h2 className="text-sm font-bold tracking-widest text-white uppercase">
-              Work Experience
-            </h2>
-          </div>
-          
-          <div className="md:col-span-8">
-            <div className="space-y-6">
-              {experiences.map((exp: any, i: number) => {
-                const Icon = iconMap[exp.icon_name] || Briefcase;
-                return (
-                  <div key={i} className="flex gap-4 items-start">
-                    <div className="w-8 h-8 rounded-full bg-white/10 border border-white/10 flex items-center justify-center flex-shrink-0 text-white">
-                      <Icon size={14} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-white text-sm sm:text-base leading-tight">
-                        {exp.company}
-                      </h3>
-                      <p className="text-sm text-gray-400 mt-1 leading-snug">
-                        {exp.role}
-                      </p>
-                      <span className="inline-block text-[10px] font-semibold tracking-wider text-gray-500 mt-1.5">
-                        {exp.period?.toUpperCase()}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
+    <section id="experience" className="py-12 border-b border-gray-200">
+      <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase block mb-6">
+        Work Experience
+      </span>
+      
+      <div className="space-y-0">
+        {experiences.map((exp: any, i: number) => {
+          const Icon = iconMap[exp.icon_name] || Briefcase;
+          return (
+            <div
+              key={i}
+              className="flex gap-4 items-start py-4 first:pt-0 last:pb-0 border-b border-gray-100 last:border-b-0"
+            >
+              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-600">
+                <Icon size={14} />
+              </div>
+              <div className="flex-1 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                <div>
+                  <h3 className="font-bold text-black text-sm leading-tight">
+                    {exp.company}
+                  </h3>
+                  <p className="text-xs text-gray-500 mt-0.5 leading-snug">
+                    {exp.role}
+                  </p>
+                </div>
+                <span className="text-[10px] sm:text-xs font-semibold text-gray-400 whitespace-nowrap">
+                  {exp.period?.toUpperCase()}
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div className="w-full h-px bg-white/10 mt-10" />
+          );
+        })}
       </div>
     </section>
   );

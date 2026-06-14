@@ -7,6 +7,14 @@ import gakharPlazaImg from "@/assets/gakhar_plaza.jpg";
 
 const fallback = [
   {
+    title: "TechnoLean Lab Website",
+    description: "Designed, developed, and deployed the official TechnoLean Lab website end-to-end.",
+    tags: ["Full-Stack", "React", "Tailwind CSS", "SEO"],
+    badge: "End-to-End",
+    link: "https://technoleanlab.com",
+    imageType: "technolean"
+  },
+  {
     title: "LitUp Solar",
     description: "An intelligent solar energy tracking and optimization solution.",
     tags: ["React", "IoT", "Sustainability"],
@@ -41,25 +49,21 @@ const ProjectsSection = () => {
 
     if (type === "solar") {
       return (
-        <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
-          <img
-            src={litupSolarImg}
-            alt={project.title}
-            className="w-full h-full object-contain"
-          />
-        </div>
+        <img
+          src={litupSolarImg}
+          alt={project.title}
+          className="w-full h-full object-contain p-6 grayscale"
+        />
       );
     }
 
     if (type === "technolean") {
       return (
-        <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
-          <img
-            src={technoleanLogo}
-            alt={project.title}
-            className="w-full h-full object-contain"
-          />
-        </div>
+        <img
+          src={technoleanLogo}
+          alt={project.title}
+          className="w-full h-full object-contain p-6 grayscale"
+        />
       );
     }
 
@@ -68,97 +72,85 @@ const ProjectsSection = () => {
         <img
           src={gakharPlazaImg}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover grayscale"
         />
       );
     }
 
     return (
-      <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
-        <img
-          src={medicareLogo}
-          alt={project.title}
-          className="w-full h-full object-contain"
-        />
-      </div>
+      <img
+        src={medicareLogo}
+        alt={project.title}
+        className="w-full h-full object-contain p-6 grayscale"
+      />
     );
   };
 
   return (
-    <section id="projects" className="py-12 px-6 bg-black text-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
-          
-          <div className="md:col-span-4 flex flex-col items-start">
-            <span className="inline-block text-[8px] font-black tracking-widest bg-white text-black px-2 py-0.5 uppercase rounded-sm mb-3">
-              MY PROJECTS
-            </span>
-            <h2 className="text-sm font-bold tracking-widest text-white uppercase">
-              Selected Case Studies
-            </h2>
-          </div>
+    <section id="projects" className="py-12 border-b border-gray-200">
+      <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase block mb-6">
+        Projects
+      </span>
 
-          <div className="md:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {projects.map((project: any, i: number) => (
-                <div key={project.title} className="group flex flex-col">
-                  {/* Image Container */}
-                  <div className="aspect-[16/10] w-full rounded-md border border-neutral-800 overflow-hidden mb-3 bg-neutral-900 relative">
-                    {renderProjectImage(project)}
-                    {project.badge && (
-                      <span className="absolute top-3 right-3 text-[8px] font-bold bg-white text-black px-1.5 py-0.5 tracking-wider rounded-sm z-20">
-                        {project.badge}
-                      </span>
-                    )}
-                  </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {projects.map((project: any) => (
+          <div
+            key={project.title}
+            className="flex flex-col bg-white border border-gray-200 rounded-md overflow-hidden"
+          >
+            {/* Placeholder thumbnail area at the top in light gray */}
+            <div className="aspect-[16/10] w-full bg-gray-100 border-b border-gray-200 flex items-center justify-center relative overflow-hidden">
+              {renderProjectImage(project)}
+              {project.badge && (
+                <span className="absolute top-2 right-2 text-[8px] font-bold bg-black text-white px-1.5 py-0.5 uppercase tracking-wider rounded-sm">
+                  {project.badge}
+                </span>
+              )}
+            </div>
 
-                  {/* Text Info */}
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2 mb-1">
-                      <h3 className="text-sm font-bold text-white">
-                        {project.title}
-                      </h3>
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-500 hover:text-white transition-colors"
-                          aria-label={`Open ${project.title}`}
-                        >
-                          <ExternalLink size={12} />
-                        </a>
-                      )}
-                    </div>
-                    <p className="text-xs text-neutral-400 leading-relaxed mb-3">
-                      {project.description}
-                    </p>
+            {/* Content area */}
+            <div className="p-4 flex flex-col flex-1">
+              <h3 className="text-sm font-bold text-black mb-1">
+                {project.title}
+              </h3>
+              
+              <p className="text-xs text-gray-500 mb-3 line-clamp-2">
+                {project.description}
+              </p>
 
-                    {/* SEE PROJECT CTA */}
-                    {project.link ? (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-white hover:text-neutral-400 transition-all w-fit"
-                      >
-                        <span>SEE PROJECT</span>
-                        <ArrowRight size={10} className="group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    ) : (
-                      <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-neutral-600">
-                        <span>IN DEVELOPMENT</span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
+              {/* Small gray bordered tech stack tags */}
+              <div className="flex flex-wrap gap-1 mb-4 mt-auto">
+                {project.tags.map((tag: string) => (
+                  <span
+                    key={tag}
+                    className="text-[9px] text-gray-400 border border-gray-200 px-1.5 py-0.5 rounded-sm"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {/* See project link with an arrow */}
+              <div>
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[10px] font-bold text-black hover:text-gray-600 transition-colors"
+                  >
+                    <span>See project</span>
+                    <ArrowRight size={10} />
+                  </a>
+                ) : (
+                  <span className="text-[10px] font-bold text-gray-400">
+                    In Development
+                  </span>
+                )}
+              </div>
             </div>
           </div>
-
-        </div>
-        
-        <div className="w-full h-px bg-white/10 mt-10" />
+        ))}
       </div>
     </section>
   );

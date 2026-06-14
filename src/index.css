@@ -69,3 +69,12 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Force disable all transitions, animations, shadows, and gradients globally */
+*, *::before, *::after {
+  transition: none !important;
+  animation: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  background-image: none !important;
+}
+

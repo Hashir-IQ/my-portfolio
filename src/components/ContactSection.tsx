@@ -8,64 +8,81 @@ const ContactSection = () => {
   const location = contact?.location ?? "Haripur, Pakistan";
 
   return (
-    <section id="contact" className="py-8 px-6 bg-white">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
-          
-          <div className="md:col-span-4">
-            <h2 className="text-sm font-bold tracking-widest text-black uppercase">
-              Contact
-            </h2>
+    <section id="contact" className="py-12">
+      {/* Uppercase Section Label */}
+      <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase block mb-6">
+        Contact
+      </span>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-16">
+        {/* Left Column: Tagline & Actions */}
+        <div>
+          <p className="text-sm text-gray-600 leading-relaxed mb-6">
+            Have a project in mind or want to collaborate? Get in touch directly or request a custom quote.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href={`mailto:${email}`}
+              className="bg-black text-white hover:bg-gray-800 text-center py-2.5 px-5 rounded-md font-semibold text-xs tracking-wide transition-colors"
+            >
+              Contact Me
+            </a>
+            <a
+              href={`mailto:${email}?subject=Project Quote Request`}
+              className="bg-white border border-gray-300 text-black hover:bg-gray-50 text-center py-2.5 px-5 rounded-md font-semibold text-xs tracking-wide transition-colors"
+            >
+              Get a Quote
+            </a>
           </div>
-
-          <div className="md:col-span-8">
-            <p className="text-xs sm:text-sm text-gray-500 mb-6 leading-relaxed">
-              Have a project in mind or want to collaborate? Get in touch directly or request a custom quote.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <a
-                href={`mailto:${email}`}
-                className="flex-1 text-center bg-black text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-md font-semibold text-xs tracking-wide shadow-sm"
-              >
-                Contact Me
-              </a>
-              <a
-                href={`mailto:${email}?subject=Project Quote Request`}
-                className="flex-1 text-center border border-gray-300 text-black hover:bg-gray-50 transition-colors py-3 px-4 rounded-md font-semibold text-xs tracking-wide"
-              >
-                Get a Quote
-              </a>
-            </div>
-
-            {/* Direct Details */}
-            <div className="space-y-3 text-xs sm:text-sm text-gray-600 mb-12">
-              <div className="flex items-center gap-3">
-                <Mail size={14} className="text-gray-400" />
-                <a href={`mailto:${email}`} className="hover:text-black transition-colors font-medium">
-                  {email}
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone size={14} className="text-gray-400" />
-                <a href={`tel:${phone}`} className="hover:text-black transition-colors font-medium">
-                  {phone}
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin size={14} className="text-gray-400" />
-                <span className="font-medium">{location}</span>
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="border-t border-gray-100 pt-6 text-center text-[10px] text-gray-400 font-medium">
-              <p>© {new Date().getFullYear()} Hashir Iqbal. All rights reserved.</p>
-            </div>
-          </div>
-
         </div>
+
+        {/* Right Column: Contact info with icons */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-500">
+              <Mail size={14} />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase leading-none">Email</p>
+              <a href={`mailto:${email}`} className="text-xs text-gray-700 hover:text-black font-semibold mt-0.5 block">
+                {email}
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-500">
+              <Phone size={14} />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase leading-none">Phone</p>
+              <a href={`tel:${phone}`} className="text-xs text-gray-700 hover:text-black font-semibold mt-0.5 block">
+                {phone}
+              </a>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 text-gray-500">
+              <MapPin size={14} />
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-gray-400 uppercase leading-none">Location</p>
+              <span className="text-xs text-gray-700 font-semibold mt-0.5 block">
+                {location}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Thin line separating footer */}
+      <div className="w-full h-px bg-gray-200 mb-6" />
+
+      {/* Footer */}
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-[10px] text-gray-400 font-medium">
+        <p>© {new Date().getFullYear()} Hashir Iqbal. All rights reserved.</p>
+        <p>Built with care.</p>
       </div>
     </section>
   );
