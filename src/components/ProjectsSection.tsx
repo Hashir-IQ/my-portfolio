@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useProjects } from "@/hooks/usePortfolioData";
 import litupSolarImg from "@/assets/litup_solar.png";
@@ -14,7 +13,7 @@ const fallback = [
   },
   {
     title: "Gakhar Plaza Management",
-    description: "An enterprise-grade property and tenant management system with automated billing.",
+    description: "An enterprise-grade property and tenant management system.",
     tags: ["Web App", "MySQL", "CRUD"],
     badge: null,
     link: null,
@@ -22,7 +21,7 @@ const fallback = [
   },
   {
     title: "MEDICARE++",
-    description: "A final year project providing intelligent healthcare diagnostics and scheduling.",
+    description: "A final year project providing intelligent healthcare diagnostics.",
     tags: ["React", "AI/ML", "Healthcare"],
     badge: "FYP",
     link: null,
@@ -35,8 +34,7 @@ const ProjectsSection = () => {
   const projects = data ?? fallback;
 
   const renderProjectImage = (project: any) => {
-    // Determine which image style to render
-    const type = project.imageType || (project.title.toLowerCase().includes("solar") ? "solar" : project.title.toLowerCase().includes("plaza") || project.title.toLowerCase().includes("gakhar") ? "architecture" : "medical");
+    const type = project.imageType || (project.title.toLowerCase().includes("solar") ? "solar" : project.title.toLowerCase().includes("plaza") || project.title.toLowerCase().includes("gakhar") ? "architecture" : project.title.toLowerCase().includes("technolean") ? "technolean" : "medical");
 
     if (type === "solar") {
       return (
@@ -48,18 +46,34 @@ const ProjectsSection = () => {
       );
     }
 
-    if (type === "architecture") {
-      // Sleek modernist concrete architectural graphic fallback
+    if (type === "technolean") {
       return (
-        <div className="w-full h-full bg-gray-50 flex items-center justify-center p-6 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+        <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-60" />
+          <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="40" width="140" height="100" rx="4" stroke="currentColor" strokeWidth="2" fill="white" />
+            <path d="M50 140V165H150V140" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="75" cy="80" r="8" stroke="currentColor" strokeWidth="2" />
+            <circle cx="125" cy="95" r="5" stroke="currentColor" strokeWidth="2" />
+            <line x1="82" y1="83" x2="120" y2="92" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
+            <line x1="55" y1="120" x2="145" y2="120" stroke="currentColor" strokeWidth="2" />
+            <circle cx="65" cy="120" r="2" fill="currentColor" />
+            <circle cx="135" cy="120" r="2" fill="currentColor" />
+          </svg>
+        </div>
+      );
+    }
+
+    if (type === "architecture") {
+      return (
+        <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
           <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 opacity-50" />
-          <svg className="w-48 h-48 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M20 180H180" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
             <path d="M40 180V60L100 20V180" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
             <path d="M100 180V90L160 60V180" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
             <line x1="60" y1="90" x2="80" y2="90" stroke="currentColor" strokeWidth="2"/>
             <line x1="60" y1="120" x2="80" y2="120" stroke="currentColor" strokeWidth="2"/>
-            <line x1="60" y1="150" x2="80" y2="150" stroke="currentColor" strokeWidth="2"/>
             <line x1="120" y1="110" x2="140" y2="110" stroke="currentColor" strokeWidth="2"/>
             <line x1="120" y1="140" x2="140" y2="140" stroke="currentColor" strokeWidth="2"/>
           </svg>
@@ -67,97 +81,83 @@ const ProjectsSection = () => {
       );
     }
 
-    // Modern workspace / workspace monitor screen visual fallback
     return (
-      <div className="w-full h-full bg-gray-50 flex items-center justify-center p-6 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
+      <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
         <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-60" />
-        <svg className="w-48 h-48 text-gray-400 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Desk surface */}
+        <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
           <line x1="20" y1="170" x2="180" y2="170" stroke="currentColor" strokeWidth="2"/>
-          {/* Monitor frame */}
-          <rect x="40" y="40" width="120" height="90" rx="4" stroke="currentColor" strokeWidth="2" fill="white"/>
-          {/* Monitor stand */}
-          <path d="M85 130L75 170H125L115 130" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-          {/* Abstract code/UI line visual on screen */}
-          <circle cx="60" cy="60" r="8" fill="currentColor" fillOpacity="0.2"/>
-          <line x1="75" y1="56" x2="140" y2="56" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="75" y1="64" x2="120" y2="64" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="55" y1="85" x2="145" y2="85" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="55" y1="95" x2="130" y2="95" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="55" y1="105" x2="110" y2="105" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <rect x="45" y="45" width="110" height="80" rx="3" stroke="currentColor" strokeWidth="2" fill="white"/>
+          <path d="M85 125L75 170H125L115 125" stroke="currentColor" strokeWidth="2"/>
+          <line x1="60" y1="85" x2="140" y2="85" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          <line x1="60" y1="95" x2="120" y2="95" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
         </svg>
       </div>
     );
   };
 
   return (
-    <section id="projects" className="py-20 px-6 bg-white border-t border-gray-100">
-      <div className="max-w-xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-          className="mb-12"
-        >
-          <span className="inline-block text-[9px] font-black tracking-widest bg-black text-white px-2.5 py-1 uppercase rounded-sm mb-4">
-            MY PROJECTS
-          </span>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-black">
-            Selected Case Studies
-          </h2>
-        </motion.div>
+    <section id="projects" className="py-8 px-6 bg-white">
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+          
+          <div className="md:col-span-4 flex flex-col items-start">
+            <span className="inline-block text-[8px] font-black tracking-widest bg-black text-white px-2 py-0.5 uppercase rounded-sm mb-3">
+              MY PROJECTS
+            </span>
+            <h2 className="text-sm font-bold tracking-widest text-black uppercase">
+              Selected Case Studies
+            </h2>
+          </div>
 
-        <div className="flex flex-col gap-12">
-          {projects.map((project: any, i: number) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group flex flex-col"
-            >
-              {/* Image Container */}
-              <div className="aspect-[4/3] w-full rounded-md border border-gray-100 overflow-hidden mb-6 bg-gray-50 relative">
-                {renderProjectImage(project)}
-                {project.badge && (
-                  <span className="absolute top-4 right-4 text-[9px] font-bold bg-black text-white px-2 py-0.5 tracking-wider rounded-sm z-20">
-                    {project.badge}
-                  </span>
-                )}
-              </div>
+          <div className="md:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {projects.map((project: any, i: number) => (
+                <div key={project.title} className="group flex flex-col">
+                  {/* Image Container */}
+                  <div className="aspect-[16/10] w-full rounded-md border border-gray-100 overflow-hidden mb-3 bg-gray-50 relative">
+                    {renderProjectImage(project)}
+                    {project.badge && (
+                      <span className="absolute top-3 right-3 text-[8px] font-bold bg-black text-white px-1.5 py-0.5 tracking-wider rounded-sm z-20">
+                        {project.badge}
+                      </span>
+                    )}
+                  </div>
 
-              {/* Text Info */}
-              <div className="flex flex-col">
-                <div className="flex items-center gap-2 mb-2">
-                  <h3 className="text-lg font-bold text-black group-hover:text-gray-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  {project.link && (
-                    <a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-400 hover:text-black transition-colors"
-                    >
-                      <ExternalLink size={14} />
-                    </a>
-                  )}
+                  {/* Text Info */}
+                  <div className="flex flex-col">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-sm font-bold text-black group-hover:text-gray-600 transition-colors">
+                        {project.title}
+                      </h3>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-black transition-colors"
+                        >
+                          <ExternalLink size={12} />
+                        </a>
+                      )}
+                    </div>
+                    <p className="text-xs text-gray-500 leading-relaxed mb-3">
+                      {project.description}
+                    </p>
+
+                    {/* READ MORE CTA */}
+                    <div className="flex items-center gap-1 text-[10px] font-bold tracking-wider text-black group-hover:gap-2 transition-all">
+                      <span>READ MORE</span>
+                      <ArrowRight size={10} />
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                  {project.description}
-                </p>
+              ))}
+            </div>
+          </div>
 
-                {/* READ MORE CTA */}
-                <div className="flex items-center gap-1.5 text-xs font-bold tracking-wider text-black group-hover:gap-2.5 transition-all">
-                  <span>READ MORE</span>
-                  <ArrowRight size={13} />
-                </div>
-              </div>
-            </motion.div>
-          ))}
         </div>
+        
+        <div className="w-full h-px bg-gray-100 mt-10" />
       </div>
     </section>
   );

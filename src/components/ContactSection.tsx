@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useContactInfo } from "@/hooks/usePortfolioData";
 
@@ -9,62 +8,64 @@ const ContactSection = () => {
   const location = contact?.location ?? "Haripur, Pakistan";
 
   return (
-    <section id="contact" className="py-20 px-6 bg-white border-t border-gray-100">
-      <div className="max-w-xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-xl sm:text-2xl font-bold text-black mb-4">
-            Contact
-          </h2>
-          <p className="text-sm text-gray-500 mb-8">
-            Have a project in mind or want to collaborate? Get in touch directly or request a custom quote.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <a
-              href={`mailto:${email}`}
-              className="flex-1 text-center bg-black text-white hover:bg-gray-800 transition-colors py-3.5 px-6 rounded-md font-semibold text-sm tracking-wide shadow-sm"
-            >
-              Contact Me
-            </a>
-            <a
-              href={`mailto:${email}?subject=Project Quote Request`}
-              className="flex-1 text-center border border-gray-300 text-black hover:bg-gray-50 transition-colors py-3.5 px-6 rounded-md font-semibold text-sm tracking-wide"
-            >
-              Get a Quote
-            </a>
+    <section id="contact" className="py-8 px-6 bg-white">
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+          
+          <div className="md:col-span-4">
+            <h2 className="text-sm font-bold tracking-widest text-black uppercase">
+              Contact
+            </h2>
           </div>
 
-          {/* Direct Details */}
-          <div className="space-y-4 text-sm text-gray-600 mb-16">
-            <div className="flex items-center gap-3">
-              <Mail size={16} className="text-gray-400" />
-              <a href={`mailto:${email}`} className="hover:text-black transition-colors font-medium">
-                {email}
+          <div className="md:col-span-8">
+            <p className="text-xs sm:text-sm text-gray-500 mb-6 leading-relaxed">
+              Have a project in mind or want to collaborate? Get in touch directly or request a custom quote.
+            </p>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <a
+                href={`mailto:${email}`}
+                className="flex-1 text-center bg-black text-white hover:bg-gray-800 transition-colors py-3 px-4 rounded-md font-semibold text-xs tracking-wide shadow-sm"
+              >
+                Contact Me
+              </a>
+              <a
+                href={`mailto:${email}?subject=Project Quote Request`}
+                className="flex-1 text-center border border-gray-300 text-black hover:bg-gray-50 transition-colors py-3 px-4 rounded-md font-semibold text-xs tracking-wide"
+              >
+                Get a Quote
               </a>
             </div>
-            <div className="flex items-center gap-3">
-              <Phone size={16} className="text-gray-400" />
-              <a href={`tel:${phone}`} className="hover:text-black transition-colors font-medium">
-                {phone}
-              </a>
+
+            {/* Direct Details */}
+            <div className="space-y-3 text-xs sm:text-sm text-gray-600 mb-12">
+              <div className="flex items-center gap-3">
+                <Mail size={14} className="text-gray-400" />
+                <a href={`mailto:${email}`} className="hover:text-black transition-colors font-medium">
+                  {email}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={14} className="text-gray-400" />
+                <a href={`tel:${phone}`} className="hover:text-black transition-colors font-medium">
+                  {phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <MapPin size={14} className="text-gray-400" />
+                <span className="font-medium">{location}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <MapPin size={16} className="text-gray-400" />
-              <span className="font-medium">{location}</span>
+
+            {/* Footer */}
+            <div className="border-t border-gray-100 pt-6 text-center text-[10px] text-gray-400 font-medium">
+              <p>© {new Date().getFullYear()} Hashir Iqbal. All rights reserved.</p>
             </div>
           </div>
 
-          {/* Footer */}
-          <div className="border-t border-gray-100 pt-8 text-center text-xs text-gray-400 font-medium">
-            <p>© {new Date().getFullYear()} Hashir Iqbal. All rights reserved.</p>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
