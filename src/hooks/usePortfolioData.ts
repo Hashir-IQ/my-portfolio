@@ -41,18 +41,19 @@ const fallbackSkills = [
 ];
 
 const fallbackExperiences = [
-  { id: "exp-1", role: "Flutter App Development Intern", company: "Innova Workmen", period: "JUL 2024 – SEP 2024", icon_name: "Terminal", sort_order: 0 },
-  { id: "exp-2", role: "Front End Web Development Intern", company: "Brain Ex World", period: "AUG 2023 – OCT 2023", icon_name: "Briefcase", sort_order: 1 },
-  { id: "exp-3", role: "WordPress Developer", company: "Freelance", period: "2022 – 2023", icon_name: "Globe", sort_order: 2 }
+  { id: "exp-0", role: "Software Developer", company: "TechnoLean Lab", period: "APR 2026 – PRESENT", icon_name: "Terminal", sort_order: 0 },
+  { id: "exp-1", role: "Flutter App Development Intern", company: "Innova Workmen", period: "JUL 2024 – SEP 2024", icon_name: "Terminal", sort_order: 1 },
+  { id: "exp-2", role: "Front End Web Development Intern", company: "Brain Ex World", period: "AUG 2023 – OCT 2023", icon_name: "Briefcase", sort_order: 2 },
+  { id: "exp-3", role: "WordPress Developer", company: "Freelance", period: "2022 – 2023", icon_name: "Globe", sort_order: 3 }
 ];
 
 const fallbackProjects = [
   {
     id: "proj-0",
     title: "TechnoLean Lab Website",
-    description: "An industrial IoT & automation agency showcase site built with clean React components, modern SEO practices, and smooth animations.",
-    tags: ["React", "Tailwind CSS", "SEO"],
-    badge: "Agency",
+    description: "Designed, developed, and deployed the official TechnoLean Lab website end-to-end. Built using high-performance components, modern SEO practices, and custom animations.",
+    tags: ["Full-Stack", "React", "Tailwind CSS", "SEO"],
+    badge: "End-to-End",
     link: "https://technoleanlab.com",
     imageType: "technolean",
     sort_order: 0
