@@ -1,6 +1,9 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useProjects } from "@/hooks/usePortfolioData";
 import litupSolarImg from "@/assets/litup_solar.png";
+import technoleanLogo from "@/assets/technolean_logo.png";
+import medicareLogo from "@/assets/medicare_logo.jpg";
+import gakharPlazaImg from "@/assets/gakhar_plaza.png";
 
 const fallback = [
   {
@@ -38,59 +41,45 @@ const ProjectsSection = () => {
 
     if (type === "solar") {
       return (
-        <img
-          src={litupSolarImg}
-          alt={project.title}
-          className="w-full h-full object-cover grayscale contrast-125 transition-transform duration-500 group-hover:scale-105"
-        />
+        <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
+          <img
+            src={litupSolarImg}
+            alt={project.title}
+            className="w-full h-full object-contain"
+          />
+        </div>
       );
     }
 
     if (type === "technolean") {
       return (
-        <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-60" />
-          <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="30" y="40" width="140" height="100" rx="4" stroke="currentColor" strokeWidth="2" fill="white" />
-            <path d="M50 140V165H150V140" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-            <circle cx="75" cy="80" r="8" stroke="currentColor" strokeWidth="2" />
-            <circle cx="125" cy="95" r="5" stroke="currentColor" strokeWidth="2" />
-            <line x1="82" y1="83" x2="120" y2="92" stroke="currentColor" strokeWidth="1.5" strokeDasharray="3 3" />
-            <line x1="55" y1="120" x2="145" y2="120" stroke="currentColor" strokeWidth="2" />
-            <circle cx="65" cy="120" r="2" fill="currentColor" />
-            <circle cx="135" cy="120" r="2" fill="currentColor" />
-          </svg>
+        <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
+          <img
+            src={technoleanLogo}
+            alt={project.title}
+            className="w-full h-full object-contain"
+          />
         </div>
       );
     }
 
     if (type === "architecture") {
       return (
-        <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
-          <div className="absolute inset-0 bg-gradient-to-tr from-gray-200 to-gray-50 opacity-50" />
-          <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 180H180" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-            <path d="M40 180V60L100 20V180" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <path d="M100 180V90L160 60V180" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-            <line x1="60" y1="90" x2="80" y2="90" stroke="currentColor" strokeWidth="2"/>
-            <line x1="60" y1="120" x2="80" y2="120" stroke="currentColor" strokeWidth="2"/>
-            <line x1="120" y1="110" x2="140" y2="110" stroke="currentColor" strokeWidth="2"/>
-            <line x1="120" y1="140" x2="140" y2="140" stroke="currentColor" strokeWidth="2"/>
-          </svg>
-        </div>
+        <img
+          src={gakharPlazaImg}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
       );
     }
 
     return (
-      <div className="w-full h-full bg-gray-50 flex items-center justify-center p-4 relative overflow-hidden group-hover:scale-105 transition-transform duration-500">
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-60" />
-        <svg className="w-24 h-24 text-gray-300 relative z-10" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="20" y1="170" x2="180" y2="170" stroke="currentColor" strokeWidth="2"/>
-          <rect x="45" y="45" width="110" height="80" rx="3" stroke="currentColor" strokeWidth="2" fill="white"/>
-          <path d="M85 125L75 170H125L115 125" stroke="currentColor" strokeWidth="2"/>
-          <line x1="60" y1="85" x2="140" y2="85" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <line x1="60" y1="95" x2="120" y2="95" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
+      <div className="w-full h-full bg-white flex items-center justify-center p-6 transition-transform duration-500 group-hover:scale-105">
+        <img
+          src={medicareLogo}
+          alt={project.title}
+          className="w-full h-full object-contain"
+        />
       </div>
     );
   };
