@@ -23,7 +23,7 @@ const fallbackHero = {
   id: "hero-1",
   name: "HASHIR IQBAL",
   taglines: ["Software Engineer", "Web Developer", "Problem Solver"],
-  email: "rhashir54321@gmail.com",
+  email: "sales@technoleanlab.com",
   phone: "+923131585840",
   linkedin_url: "https://linkedin.com",
   cv_url: ""
@@ -96,7 +96,7 @@ const fallbackEducation = [
 
 const fallbackContact = {
   id: "contact-1",
-  email: "rhashir54321@gmail.com",
+  email: "sales@technoleanlab.com",
   phone: "+923131585840",
   location: "Haripur, Pakistan"
 };

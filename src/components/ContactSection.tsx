@@ -1,11 +1,67 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { useState } from "react";
+import { Mail, Phone, MapPin, Loader2 } from "lucide-react";
 import { useContactInfo } from "@/hooks/usePortfolioData";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 const ContactSection = () => {
   const { data: contact } = useContactInfo();
-  const email = contact?.email ?? "rhashir54321@gmail.com";
+  const email = contact?.email ?? "sales@technoleanlab.com";
   const phone = contact?.phone ?? "+923131585840";
   const location = contact?.location ?? "Haripur, Pakistan";
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/sales@technoleanlab.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: "New Contact Submission from Portfolio"
+        })
+      });
+
+      const result = await response.json();
+      if (result.success === "true" || response.ok) {
+        toast.success("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error(result.message || "Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section id="contact" className="py-12">
@@ -15,25 +71,75 @@ const ContactSection = () => {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-16">
-        {/* Left Column: Tagline & Actions */}
+        {/* Left Column: Tagline & Contact Form */}
         <div>
           <p className="text-sm text-gray-600 leading-relaxed mb-6">
-            Have a project in mind or want to collaborate? Get in touch directly or request a custom quote.
+            Have a project in mind or want to collaborate? Feel free to drop a message using the form below.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <a
-              href={`mailto:${email}`}
-              className="bg-black text-white hover:bg-gray-800 text-center py-2.5 px-5 rounded-md font-semibold text-xs tracking-wide transition-colors"
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-[10px] font-bold text-gray-400 uppercase mb-1">
+                Name
+              </label>
+              <Input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Your Name"
+                required
+                className="bg-white border-gray-200 focus:border-black focus:ring-black transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-[10px] font-bold text-gray-400 uppercase mb-1">
+                Email
+              </label>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                required
+                className="bg-white border-gray-200 focus:border-black focus:ring-black transition-colors"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-[10px] font-bold text-gray-400 uppercase mb-1">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Your Message"
+                required
+                rows={4}
+                className="bg-white border-gray-200 focus:border-black focus:ring-black transition-colors resize-none min-h-[100px]"
+              />
+            </div>
+
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-black text-white hover:bg-gray-800 font-semibold text-xs tracking-wide transition-colors h-10"
             >
-              Contact Me
-            </a>
-            <a
-              href={`mailto:${email}?subject=Project Quote Request`}
-              className="bg-white border border-gray-300 text-black hover:bg-gray-50 text-center py-2.5 px-5 rounded-md font-semibold text-xs tracking-wide transition-colors"
-            >
-              Get a Quote
-            </a>
-          </div>
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="mr-2 h-3 w-3 animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
+            </Button>
+          </form>
         </div>
 
         {/* Right Column: Contact info with icons */}

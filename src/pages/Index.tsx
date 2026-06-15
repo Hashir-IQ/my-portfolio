@@ -92,7 +92,7 @@ const Index = () => {
             <Linkedin size={16} />
           </a>
           <a
-            href="mailto:rhashir54321@gmail.com"
+            href="mailto:sales@technoleanlab.com"
             className="text-gray-400 hover:text-black"
             aria-label="Email"
           >
