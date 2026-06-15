@@ -30,7 +30,7 @@ const Index = () => {
           <div className="w-12 h-12 md:w-20 md:h-20 rounded-full overflow-hidden bg-gray-50 border border-gray-200 mb-0 md:mb-4 flex-shrink-0">
             <img
               src={profileImg}
-              alt="Hashir Iqbal Profile"
+              alt="Hashir Iqbal - Professional Web Developer"
               className="w-full h-full object-cover object-top"
             />
           </div>

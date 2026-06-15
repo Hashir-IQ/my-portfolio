@@ -10,9 +10,9 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-12">
       {/* Uppercase Section Label */}
-      <span className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
+      <h2 className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
         Contact
-      </span>
+      </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-16">
         {/* Left Column: Tagline & Actions */}

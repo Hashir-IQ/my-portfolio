@@ -1,9 +1,5 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { useProjects } from "@/hooks/usePortfolioData";
-import litupSolarImg from "@/assets/litup_solar.png";
-import technoleanLogo from "@/assets/technolean_logo.png";
-import medicareLogo from "@/assets/medicare_logo.jpg";
-import gakharPlazaImg from "@/assets/gakhar_plaza.jpg";
 
 const fallback = [
   {
@@ -44,53 +40,28 @@ const ProjectsSection = () => {
   const { data } = useProjects();
   const projects = data ?? fallback;
 
-  const renderProjectImage = (project: any) => {
-    const type = project.imageType || (project.title.toLowerCase().includes("solar") ? "solar" : project.title.toLowerCase().includes("plaza") || project.title.toLowerCase().includes("gakhar") ? "architecture" : project.title.toLowerCase().includes("technolean") ? "technolean" : "medical");
-
-    if (type === "solar") {
-      return (
-        <img
-          src={litupSolarImg}
-          alt={project.title}
-          className="w-full h-full object-contain p-6"
-        />
-      );
+  const getProjectImage = (project: any) => {
+    const title = project.title.toLowerCase();
+    if (title.includes("technolean")) {
+      return "/assets/technolean_screenshot.png";
     }
-
-    if (type === "technolean") {
-      return (
-        <img
-          src={technoleanLogo}
-          alt={project.title}
-          className="w-full h-full object-contain p-6"
-        />
-      );
+    if (title.includes("solar")) {
+      return "/assets/litup_solar.png";
     }
-
-    if (type === "architecture") {
-      return (
-        <img
-          src={gakharPlazaImg}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
-      );
+    if (title.includes("plaza") || title.includes("gakhar")) {
+      return "/assets/gakhar_plaza.jpg";
     }
-
-    return (
-      <img
-        src={medicareLogo}
-        alt={project.title}
-        className="w-full h-full object-contain p-6"
-      />
-    );
+    if (title.includes("medicare")) {
+      return "/assets/medicare_screenshot.jpg";
+    }
+    return "/placeholder.svg";
   };
 
   return (
     <section id="projects" className="py-12 border-b border-gray-200">
-      <span className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
+      <h2 className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
         Projects
-      </span>
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project: any) => (
@@ -98,9 +69,13 @@ const ProjectsSection = () => {
             key={project.title}
             className="flex flex-col bg-white border border-gray-200 rounded-md overflow-hidden"
           >
-            {/* Placeholder thumbnail area at the top in light gray */}
-            <div className="aspect-[16/10] w-full bg-gray-100 border-b border-gray-200 flex items-center justify-center relative overflow-hidden">
-              {renderProjectImage(project)}
+            {/* Screenshot image at the top */}
+            <div className="h-[160px] w-full bg-gray-100 border-b border-gray-200 relative overflow-hidden">
+              <img
+                src={getProjectImage(project)}
+                alt={`${project.title} Screenshot`}
+                className={`w-full h-full object-cover rounded-t-md ${project.title.toLowerCase().includes("solar") ? "bg-white" : ""}`}
+              />
               {project.badge && (
                 <span className="absolute top-2 right-2 text-[8px] font-bold bg-black text-white px-1.5 py-0.5 uppercase tracking-wider rounded-sm">
                   {project.badge}

@@ -16,9 +16,9 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="py-12 border-b border-gray-200">
-      <span className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
+      <h2 className="text-xs font-extrabold tracking-widest text-gray-600 uppercase block mb-6">
         Skills
-      </span>
+      </h2>
       
       <div className="flex flex-wrap gap-2">
         {allSkills.map((skill: string) => (

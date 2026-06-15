@@ -31,7 +31,7 @@ const fallbackHero = {
 
 const fallbackAbout = {
   id: "about-1",
-  paragraphs: ["Software engineer who turns ideas into clean, working products. I build web apps that are simple on the surface and solid underneath. I write code like I mean it."]
+  paragraphs: ["Hi, I'm Hashir Iqbal, a professional Web Developer and Software Engineer. I specialize in building high-performance web applications that are simple on the surface and solid underneath. With expertise in React, TypeScript, full-stack development, and AI integration, I write clean, optimized code that delivers outstanding user experiences."]
 };
 
 const fallbackSkills = [
